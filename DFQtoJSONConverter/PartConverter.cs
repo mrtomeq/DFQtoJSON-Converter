@@ -22,9 +22,11 @@ namespace DFQtoJSONConverter
 
 		public static void SetProperty(string key, Part part, string value)
 		{
-			var propertySetter = KeyLookup[key];
-
-			propertySetter?.Invoke(value, part);
+			Action<string, Part> propertySetter;
+			if (KeyLookup.TryGetValue(key, out propertySetter))
+			{
+				propertySetter?.Invoke(value, part);
+			}
 		}
 
 		public static readonly Dictionary<string, Action<string, Part>> KeyLookup = new Dictionary<string, Action<string, Part>>

@@ -19,11 +19,20 @@ namespace DFQtoJSONConverter
 
 			Parts = new List<Part>();
 			var dfqFile = File.ReadAllLines(dfqFilePath);
+			var lineBlock = new List<string>();
 
 			foreach (var line in dfqFile)
 			{
 				//todo read entire block until new line 
-				ProcessLine(line);
+				if (string.IsNullOrEmpty(line))
+				{
+					ProcessBlock(lineBlock);
+					lineBlock.Clear();
+				}
+				else
+				{
+					lineBlock.Add(line);
+				}
 			}
 		}
 
@@ -31,15 +40,20 @@ namespace DFQtoJSONConverter
 		{
 			var firstLine = block.First();
 
-			if (firstLine.StartsWith("K0100"))
+			if(firstLine.StartsWith("K1") || firstLine.StartsWith("K0100"))
 			{
-				//skip number of characteristics ?
-			}else if(firstLine.StartsWith("K1"))
-			{
-				
 				//process part data
-				var part = ProcessPart(block);
-				//todo add to part list, change current part to new part
+				var partConverter = new PartConverter();
+				var part = partConverter.ConvertPart(block);
+
+				if (part != null)
+				{
+					_currentPart = part;
+					Parts.Add(part);
+				}
+			}else if (firstLine.StartsWith("K2"))
+			{
+				//todo process characteristic data
 			}
 		}
 
@@ -55,7 +69,7 @@ namespace DFQtoJSONConverter
 			if (line.StartsWith("K1"))
 			{
 				//process part data
-				ProcessPart(line);
+				//ProcessPart(line);
 				//todo add to part list, change current part to new part
 			}
 
