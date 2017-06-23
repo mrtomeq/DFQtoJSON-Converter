@@ -64,25 +64,35 @@ namespace DFQtoJSONConverter
 			if (firstLine.StartsWith("K1"))
 			{
 				//process part data
+
 				var partConverter = new PartConverter();
 				var part = partConverter.Convert(block);
 
 				if (part != null)
 				{
-					_currentPart = part;
+					if (_currentPart != part && _currentPart != null)
+					{
+						//assign characteristics to _current part
+						_currentPart.Characteristics = Characteristics.Where(p => string.IsNullOrEmpty(p.PartNumber) && !string.IsNullOrEmpty(p.Number));
+
+						foreach (var currentPartCharacteristic in _currentPart.Characteristics)
+						{
+							currentPartCharacteristic.PartNumber = _currentPart.Number;
+						}
+					}
+
 					Parts.Add(part);
+					_currentPart = part;
 				}
 			}else if (firstLine.StartsWith("K2"))
 			{
 				//process characteristic data
 				var characteristicConverter = new CharacteristicConverter();
 				characteristicConverter.Convert(block, Characteristics.ToArray());
-				//todo assign processed characteristics to current part
 			}
 		}
 
 		private Part _currentPart;
-
 
 		public string GetJson()
 		{

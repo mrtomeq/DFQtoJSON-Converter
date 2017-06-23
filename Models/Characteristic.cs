@@ -4,6 +4,8 @@ namespace Models
 {
 	public class Characteristic
 	{
+		public string PartNumber { get; set; }
+
 		[Display(Name = "K2001", Description = "Characteristic number")]
 		public string Number { get; set; }
 

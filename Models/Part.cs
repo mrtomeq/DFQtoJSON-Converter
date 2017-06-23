@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
 	public class Part
 	{
+		public IEnumerable<Characteristic> Characteristics { get; set; }
+
 		[Display(Name = "K1001", Description = "Part number")]
 		public string Number { get; set; }
 
