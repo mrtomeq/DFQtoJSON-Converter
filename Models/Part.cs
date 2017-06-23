@@ -13,6 +13,18 @@ namespace Models
 		[Display(Name = "K1003", Description = "Part abbreviation")]
 		public string Abbreviation { get; set; }
 
+		[Display(Name = "K1004", Description = "Part Amendment status")]
+		public string AmendmentStatus { get; set; }
+
+		[Display(Name = "K1005", Description = "Product")]
+		public string Product { get; set; }
+
+		[Display(Name = "K1007", Description = "Part number - short description")]
+		public string NumberShort { get; set; }
+
+		[Display(Name = "K1008", Description = "Part type")]
+		public string Type { get; set; }
+
 		[Display(Name = "K1022", Description = "Manufacturer description")]
 		public string ManufacturerDescription { get; set; }
 

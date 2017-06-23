@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using DFQtoJSONConverter.Characteristics;
+using DFQtoJSONConverter.Parts;
 using Models;
 
 namespace DFQtoJSONConverter
@@ -11,6 +13,7 @@ namespace DFQtoJSONConverter
 	public class DfqConverter
 	{
 		public IList<Part> Parts { get; set; }
+		public IList<Characteristic> Characteristics { get; set; }
 
 		public void Convert(string dfqFilePath)
 		{
@@ -40,11 +43,29 @@ namespace DFQtoJSONConverter
 		{
 			var firstLine = block.First();
 
-			if(firstLine.StartsWith("K1") || firstLine.StartsWith("K0100"))
+			if (firstLine.StartsWith("K0100"))
+			{
+				var values = firstLine.Split(' ');
+				int numberOfCharacteristics;
+
+				if (!int.TryParse(values[1], out numberOfCharacteristics))
+				{
+					throw new Exception("Value of field K0100 is invalid.");
+				}
+
+				while (numberOfCharacteristics == Characteristics.Count)
+				{
+					Characteristics.Add(new Characteristic());
+				}
+
+				firstLine = block[1];
+			}
+
+			if (firstLine.StartsWith("K1"))
 			{
 				//process part data
 				var partConverter = new PartConverter();
-				var part = partConverter.ConvertPart(block);
+				var part = partConverter.Convert(block);
 
 				if (part != null)
 				{
@@ -53,28 +74,11 @@ namespace DFQtoJSONConverter
 				}
 			}else if (firstLine.StartsWith("K2"))
 			{
-				//todo process characteristic data
+				//process characteristic data
+				var characteristicConverter = new CharacteristicConverter();
+				characteristicConverter.Convert(block, Characteristics.ToArray());
+				//todo assign processed characteristics to current part
 			}
-		}
-
-		private void ProcessLine(string line)
-		{
-			if (line.StartsWith("K0100"))
-			{
-				//skip number of characteristics ?
-				return;
-			}
-
-			//todo read entire block until new line 
-			if (line.StartsWith("K1"))
-			{
-				//process part data
-				//ProcessPart(line);
-				//todo add to part list, change current part to new part
-			}
-
-			
-			throw new NotImplementedException();
 		}
 
 		private Part _currentPart;
@@ -84,15 +88,5 @@ namespace DFQtoJSONConverter
 		{
 			return null;
 		}
-
-		//read file
-
-		//process each line
-
-		//process part
-
-		//process characteristic
-
-		//process measurements
 	}
 }

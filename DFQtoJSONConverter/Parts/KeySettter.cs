@@ -2,25 +2,11 @@
 using System.Collections.Generic;
 using Models;
 
-namespace DFQtoJSONConverter
+namespace DFQtoJSONConverter.Parts
 {
-	public class PartConverter
+	public static class KeySettter
 	{
-		public Part ConvertPart(IEnumerable<string> block)
-		{
-			var part = new Part();
-
-			foreach (var line in block)
-			{
-				var values = line.Split(' ');
-
-				SetProperty(values[0], part, values[1]);
-			}
-
-			return part;
-		}
-
-		public static void SetProperty(string key, Part part, string value)
+		public static void SetProperty(string key, string value, Part part)
 		{
 			Action<string, Part> propertySetter;
 			if (KeyLookup.TryGetValue(key, out propertySetter))
@@ -29,20 +15,27 @@ namespace DFQtoJSONConverter
 			}
 		}
 
-		public static readonly Dictionary<string, Action<string, Part>> KeyLookup = new Dictionary<string, Action<string, Part>>
-		{
-			{"K1001", SetPartNumber },
-			{"K1002", SetDescription },
-			{"K1003", SetAbbreviation },
-			{"K1022", SetManufacturerDescription },
-			{"K1023", SetManufacturerNumber },
-			{"K1044", SetDrawingNumber},
-			{"K1311", SetProductionOrder},
-			{"K1062", SetCustomerDescription},
-			{"K1063", SetCustomerNumber},
-			//{"K8500", SubgroupSize},
-			//{"K8501", SubgroupType}
-		};
+		public static readonly Dictionary<string, Action<string, Part>> KeyLookup =
+			new Dictionary<string, Action<string, Part>>
+			{
+				{"K1001", SetPartNumber},
+				{"K1002", SetDescription},
+				{"K1003", SetAbbreviation},
+				{"K1004", SetAmendmentStatus},
+				{"K1005", SetProduct},
+				{"K1007", SetNumberShort},
+				{"K1008", SetType},
+
+
+				{"K1022", SetManufacturerDescription},
+				{"K1023", SetManufacturerNumber},
+				{"K1044", SetDrawingNumber},
+				{"K1311", SetProductionOrder},
+				{"K1062", SetCustomerDescription},
+				{"K1063", SetCustomerNumber},
+				//{"K8500", SubgroupSize},
+				//{"K8501", SubgroupType}
+			};
 
 		public static void SetPartNumber(string value, Part part)
 		{
@@ -58,6 +51,32 @@ namespace DFQtoJSONConverter
 		{
 			part.Abbreviation = value;
 		}
+
+		public static void SetAmendmentStatus(string value, Part part)
+		{
+			part.AmendmentStatus = value;
+		}
+
+		public static void SetProduct(string value, Part part)
+		{
+			part.Product = value;
+		}
+
+		public static void SetNumberShort(string value, Part part)
+		{
+			part.NumberShort = value;
+		}
+
+		public static void SetType(string value, Part part)
+		{
+			part.Type = value;
+		}
+
+
+
+
+
+
 
 		public static void SetManufacturerDescription(string value, Part part)
 		{
