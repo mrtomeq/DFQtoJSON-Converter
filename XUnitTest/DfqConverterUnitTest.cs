@@ -1,14 +1,12 @@
-using System;
 using System.IO;
 using DFQtoJSONConverter;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
-namespace UnitTest
+namespace XUnitTest
 {
-	[TestClass]
 	public class DfqConverterUnitTest
 	{
-		[TestMethod]
+		[Fact]
 		public void ConvertTest()
 		{
 			var converter = new DfqConverter();

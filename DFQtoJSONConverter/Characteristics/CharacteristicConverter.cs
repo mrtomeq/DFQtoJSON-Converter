@@ -9,17 +9,19 @@ namespace DFQtoJSONConverter.Characteristics
 		{
 			foreach (var line in block)
 			{
-				var values = line.Split(' ');
+				var spaceIndex = line.IndexOf(' ');
+				var key = line.Substring(0, spaceIndex);
+				var value = line.Substring(spaceIndex+1);
 
-				if (values[0].Length == 5)
+				if (key.Length == 5)
 				{
 					//Field structure version 1
-					ProcessLineStructure1(values[0], values[1], characteristics);
+					ProcessLineStructure1(key, value, characteristics);
 				}
 				else
 				{
 					//Field structure version 2
-					ProcessLineStructure2(values[0], values[1], characteristics);
+					ProcessLineStructure2(key, value, characteristics);
 				}
 			}
 		}
@@ -51,7 +53,7 @@ namespace DFQtoJSONConverter.Characteristics
 			}
 			else
 			{
-				KeySetter.SetProperty(keyValues[0], valueLine, characteristics[characteristicNumber]);
+				KeySetter.SetProperty(keyValues[0], valueLine, characteristics[characteristicNumber-1]);
 			}
 		}
 	}

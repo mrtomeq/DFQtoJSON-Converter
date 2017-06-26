@@ -1,0 +1,6 @@
+﻿namespace XUnitTest
+{
+    class PartConverterUnitTest
+    {
+    }
+}

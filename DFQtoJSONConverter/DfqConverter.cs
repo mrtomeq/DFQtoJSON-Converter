@@ -13,7 +13,7 @@ namespace DFQtoJSONConverter
 	public class DfqConverter
 	{
 		public IList<Part> Parts { get; set; }
-		public IList<Characteristic> Characteristics { get; set; }
+		public IList<Characteristic> Characteristics { get; set; } = new List<Characteristic>();
 
 		public void Convert(string dfqFilePath)
 		{
@@ -26,7 +26,7 @@ namespace DFQtoJSONConverter
 
 			foreach (var line in dfqFile)
 			{
-				//todo read entire block until new line 
+				//read entire block until new line 
 				if (string.IsNullOrEmpty(line))
 				{
 					ProcessBlock(lineBlock);
@@ -53,7 +53,7 @@ namespace DFQtoJSONConverter
 					throw new Exception("Value of field K0100 is invalid.");
 				}
 
-				while (numberOfCharacteristics == Characteristics.Count)
+				while (numberOfCharacteristics > Characteristics.Count)
 				{
 					Characteristics.Add(new Characteristic());
 				}
@@ -64,7 +64,6 @@ namespace DFQtoJSONConverter
 			if (firstLine.StartsWith("K1"))
 			{
 				//process part data
-
 				var partConverter = new PartConverter();
 				var part = partConverter.Convert(block);
 
