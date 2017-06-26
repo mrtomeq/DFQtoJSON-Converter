@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using DFQtoJSONConverter.Characteristics;
+using DFQtoJSONConverter.Measurements;
 using DFQtoJSONConverter.Parts;
 using Models;
 
@@ -14,6 +15,7 @@ namespace DFQtoJSONConverter
 	{
 		public IList<Part> Parts { get; set; }
 		public IList<Characteristic> Characteristics { get; set; } = new List<Characteristic>();
+		private bool _currentPartHasNoCharacteristics;
 
 		public void Convert(string dfqFilePath)
 		{
@@ -61,11 +63,15 @@ namespace DFQtoJSONConverter
 				firstLine = block[1];
 			}
 
+			if (firstLine.StartsWith("K0999"))
+			{
+				//todo finish
+			}
+
 			if (firstLine.StartsWith("K1"))
 			{
 				//process part data
-				var partConverter = new PartConverter();
-				var part = partConverter.Convert(block);
+				var part = PartConverter.Convert(block);
 
 				if (part != null)
 				{
@@ -86,8 +92,12 @@ namespace DFQtoJSONConverter
 			}else if (firstLine.StartsWith("K2"))
 			{
 				//process characteristic data
-				var characteristicConverter = new CharacteristicConverter();
-				characteristicConverter.Convert(block, Characteristics.ToArray());
+				CharacteristicConverter.Convert(block, Characteristics.ToArray());
+			}else if (firstLine.StartsWith("K00") || char.IsNumber(firstLine[0]))
+			{
+				//process value portion
+				//todo part and characteristic are considered finished now so make sure we got all processed characteristics assigned to current part
+				var measured = MeasurementConverter.Convert(block);
 			}
 		}
 

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DfqFiles\characteristics-mixed structure.dfq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DfqFiles\characteristics-mixed structure.dfq">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DfqFiles\features.dfq">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -18,6 +25,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DFQtoJSONConverter\DFQtoJSONConverter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
 </Project>

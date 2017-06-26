@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using DFQtoJSONConverter;
 using Xunit;
 
@@ -11,7 +12,7 @@ namespace XUnitTest
 		{
 			var converter = new DfqConverter();
 			converter.Convert(Path.Combine(Directory.GetCurrentDirectory(), "DfqFiles/characteristics-mixed structure.dfq"));
-			Assert.Collection(converter.Characteristics);
+			Assert.True(converter.Characteristics.Any());
 		}
 	}
 }

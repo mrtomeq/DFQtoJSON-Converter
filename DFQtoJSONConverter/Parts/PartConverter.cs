@@ -3,9 +3,9 @@ using Models;
 
 namespace DFQtoJSONConverter.Parts
 {
-	public class PartConverter
+	public static class PartConverter
 	{
-		public Part Convert(IEnumerable<string> block)
+		public static Part Convert(IEnumerable<string> block)
 		{
 			var part = new Part();
 
