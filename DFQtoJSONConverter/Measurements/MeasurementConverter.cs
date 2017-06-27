@@ -5,22 +5,19 @@ namespace DFQtoJSONConverter.Measurements
 {
 	public static class MeasurementConverter
 	{
-		public static MeasuredValues Convert(IEnumerable<string> block)
+		public static IEnumerable<MeasuredValues> Convert(IEnumerable<string> block, Characteristic[] characteristics)
 		{
-			var measured = new MeasuredValues();
+			var measured = new List<MeasuredValues>();
 
 			foreach (var line in block)
 			{
-				var spaceIndex = line.IndexOf(' ');
-				var key = line.Substring(0, spaceIndex);
-				var value = line.Substring(spaceIndex + 1);
-
-				if (value.IndexOf((char)15) > 0)
+				if (char.IsNumber(line[0]))
 				{
+					//todo either create ne measuredVaule here or link it to characteristic...
 					//Field structure version 1
-					//ProcessLineStructure1(key, value, characteristics);
+					//ProcessLineStructure1(line, characteristics);
 				}
-				else
+				else if (line.StartsWith("K00"))
 				{
 					//Field structure version 2
 					//ProcessLineStructure2(key, value, characteristics);
@@ -30,13 +27,15 @@ namespace DFQtoJSONConverter.Measurements
 			return measured;
 		}
 
-		public static void ProcessLineStructure1(string key, string valueLine, MeasuredValues[] characteristics)
+		public static void ProcessLineStructure1(string line, MeasuredValues[] measuredValues)
 		{
-			var values = valueLine.Split((char)15);
+			//splits line into values for multiple characteristics
+			var characteristicValues = line.Split((char)15);
 
-			for (var index = 0; index < values.Length; index++)
+			for (var index = 0; index < characteristicValues.Length; index++)
 			{
-				KeySetter.SetProperty(key, values[index], characteristics[index]);
+				var values = characteristicValues[index].Split((char) 20);
+				KeySetter.SetFromArray(values, measuredValues[index]);
 			}
 		}
 

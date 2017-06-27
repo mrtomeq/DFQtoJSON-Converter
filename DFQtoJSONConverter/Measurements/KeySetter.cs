@@ -15,6 +15,61 @@ namespace DFQtoJSONConverter.Measurements
 			}
 		}
 
+		public static void SetFromArray(string[] values, MeasuredValues measuredValues)
+		{
+			if (values.Length > 0)
+			{
+				//set measured value
+				SetProperty("K0001", values[0], measuredValues);
+			}
+			if (values.Length >= 2)
+			{
+				//set Attribute,
+				SetProperty("K0002", values[1], measuredValues);
+			}
+			if (values.Length >= 3)
+			{
+				//set Date / time,
+				SetProperty("K0004", values[2], measuredValues);
+			}
+			if (values.Length >= 4)
+			{
+				//set Events,
+				SetProperty("K0005", values[3], measuredValues);
+			}
+			if (values.Length >= 5)
+			{
+				//set Batch number,
+				values[4] = values[4].Replace("#", "");
+				SetProperty("K0006", values[4], measuredValues);
+			}
+			if (values.Length >= 6)
+			{
+				//set Nest number,
+				SetProperty("K0007", values[5], measuredValues);
+			}
+			if (values.Length >= 7)
+			{
+				//set Operator number,
+				SetProperty("K0008", values[6], measuredValues);
+			}
+			if (values.Length >= 8)
+			{
+				//set Machine number,
+				SetProperty("K0010", values[7], measuredValues);
+			}
+			if (values.Length >= 9)
+			{
+				//set Process parameter,
+				SetProperty("K0011", values[8], measuredValues);
+			}
+			if (values.Length == 10)
+			{
+				//set Gage number.
+				SetProperty("K0012", values[9], measuredValues);
+			}
+		}
+
 		public static readonly Dictionary<string, Action<string, MeasuredValues>> KeyLookup =
 			new Dictionary<string, Action<string, MeasuredValues>>
 			{
