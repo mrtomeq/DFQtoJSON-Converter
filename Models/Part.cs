@@ -5,7 +5,7 @@ namespace Models
 {
 	public class Part
 	{
-		public IEnumerable<Characteristic> Characteristics { get; set; }
+		public Characteristic[] Characteristics { get; set; }
 
 		[Display(Name = "K1001", Description = "Part number")]
 		public string Number { get; set; }

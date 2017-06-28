@@ -6,7 +6,7 @@ namespace Models
 	public class MeasuredValues
 	{
 		[Display(Name = "K0001", Description = "Value")]
-		public float Value { get; set; }
+		public float? Value { get; set; }
 
 		[Display(Name = "K0002", Description = "Attribute")]
 		public int Attribute { get; set; }

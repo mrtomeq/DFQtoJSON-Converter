@@ -8,11 +8,15 @@ namespace DFQtoJSONConverter.Measurements
 	{
 		public static void SetProperty(string key, string value, MeasuredValues part)
 		{
-			Action<string, MeasuredValues> propertySetter;
-			if (KeyLookup.TryGetValue(key, out propertySetter))
+			if (KeyLookup.TryGetValue(key, out Action<string, MeasuredValues> propertySetter))
 			{
 				propertySetter?.Invoke(value, part);
 			}
+		}
+
+		public static bool IsNewMeasurement(string key, MeasuredValues measuredValues)
+		{
+			return measuredValues == null || key.Equals("K0001") && measuredValues.Value.HasValue;
 		}
 
 		public static void SetFromArray(string[] values, MeasuredValues measuredValues)
@@ -70,49 +74,155 @@ namespace DFQtoJSONConverter.Measurements
 			}
 		}
 
-		public static readonly Dictionary<string, Action<string, MeasuredValues>> KeyLookup =
-			new Dictionary<string, Action<string, MeasuredValues>>
+		public static readonly Dictionary<string, Action<string, MeasuredValues>> KeyLookup = new Dictionary<string, Action<string, MeasuredValues>>
 			{
-				{"K1001", SetPartNumber},
-				{"K1002", SetDescription},
-				//{"K1003", SetAbbreviation},
-				//{"K1004", SetAmendmentStatus},
-				//{"K1005", SetProduct},
-				//{"K1007", SetNumberShort},
-				//{"K1008", SetType},
-
-
-				//{"K1022", SetManufacturerDescription},
-				//{"K1023", SetManufacturerNumber},
-				//{"K1044", SetDrawingNumber},
-				//{"K1311", SetProductionOrder},
-				//{"K1062", SetCustomerDescription},
-				//{"K1063", SetCustomerNumber},
-				//{"K8500", SubgroupSize},
-				//{"K8501", SubgroupType}
+				{"K0001", SetValue},
+				{"K0002", SetAttribute},
+				{"K0004", SetDateTime},
+				{"K0005", SetEvents},
+				{"K0006", SetBatchNumber},
+				{"K0007", SetSpindleNumber},
+				{"K0008", SetOperatorNumber},
+				{"K0009", SetText},
+				{"K0010", SetMachineNumber},
+				{"K0011", SetProcessParameter},
+				{"K0012", SetGageNumber},
+				{"K0014", SetPartIdent},
+				{"K0015", SetReasonForTest},
+				{"K0016", SetProductionNumber},
+				{"K0017", SetWorkPieceFixtureNumber},
+				{"K0020", SetSubgroupSize},
+				{"K0021", SetNumberOfErrors},
+				{"K0053", SetOrderNumber},
+				{"K0097", SetValuesGuid}
 			};
 
-		public static void SetPartNumber(string value, MeasuredValues measured)
+		public static void SetValue(string value, MeasuredValues measured)
 		{
-			//part.Number = value;
+			if (float.TryParse(value, out float result))
+			{
+				measured.Value = result;
+			}
 		}
 
-		public static void SetDescription(string value, MeasuredValues measured)
+		public static void SetAttribute(string value, MeasuredValues measured)
 		{
-			//part.Description = value;
+			if (int.TryParse(value, out int result))
+			{
+				measured.Attribute = result;
+			}
 		}
 
+		public static void SetDateTime(string value, MeasuredValues measured)
+		{
+			if (DateTime.TryParse(value, out DateTime result))
+			{
+				measured.DateTime = result;
+			}
+		}
 
-		/*
-		 * 
-		 *    I3 = Integer (1 Byte)
-			o I5 = Integer (2 Byte)
-			o I10 = Integer (4 Byte)
-			o F = Float
-			o D = Date/Time format
-			o A = Alpha numerical
-			o S = special coding
-		 * 
-		 */
+		public static void SetEvents(string value, MeasuredValues measured)
+		{
+			measured.Events = value;
+		}
+
+		public static void SetBatchNumber(string value, MeasuredValues measured)
+		{
+			measured.BatchNumber = value;
+		}
+
+		public static void SetSpindleNumber(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.SpindleNumber = result;
+			}
+		}
+
+		public static void SetOperatorNumber(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.OperatorNumber = result;
+			}
+		}
+
+		public static void SetText(string value, MeasuredValues measured)
+		{
+			measured.Text = value;
+		}
+
+		public static void SetMachineNumber(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.MachineNumber = result;
+			}
+		}
+
+		public static void SetProcessParameter(string value, MeasuredValues measured)
+		{
+			measured.Text = value;
+		}
+
+		public static void SetGageNumber(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.GageNumber = result;
+			}
+		}
+
+		public static void SetPartIdent(string value, MeasuredValues measured)
+		{
+			measured.PartIdent = value;
+		}
+
+		public static void SetReasonForTest(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.ReasonForTest = result;
+			}
+		}
+
+		public static void SetProductionNumber(string value, MeasuredValues measured)
+		{
+			measured.ProductionNumber = value;
+		}
+
+		public static void SetWorkPieceFixtureNumber(string value, MeasuredValues measured)
+		{
+			measured.WorkPieceFixtureNumber = value;
+		}
+
+		public static void SetSubgroupSize(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.SubgroupSize = result;
+			}
+		}
+
+		public static void SetNumberOfErrors(string value, MeasuredValues measured)
+		{
+			if (int.TryParse(value, out int result))
+			{
+				measured.NumberOfErrors = result;
+			}
+		}
+
+		public static void SetOrderNumber(string value, MeasuredValues measured)
+		{
+			measured.OrderNumber = value;
+		}
+
+		public static void SetValuesGuid(string value, MeasuredValues measured)
+		{
+			if (Guid.TryParse(value, out Guid result))
+			{
+				measured.ValuesGuid = result;
+			}
+		}
 	}
 }

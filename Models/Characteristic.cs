@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
 	public class Characteristic
 	{
 		public string PartNumber { get; set; }
+		public IList<MeasuredValues> Measurements { get; set; } = new List<MeasuredValues>();
 
 		[Display(Name = "K2001", Description = "Characteristic number")]
 		public string Number { get; set; }

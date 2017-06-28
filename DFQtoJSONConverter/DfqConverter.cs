@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using DFQtoJSONConverter.Characteristics;
 using DFQtoJSONConverter.Measurements;
 using DFQtoJSONConverter.Parts;
@@ -13,9 +11,9 @@ namespace DFQtoJSONConverter
 {
 	public class DfqConverter
 	{
+		private Part _currentPart;
 		public IList<Part> Parts { get; set; }
 		public IList<Characteristic> Characteristics { get; set; } = new List<Characteristic>();
-		private bool _currentPartHasNoCharacteristics;
 
 		public void Convert(string dfqFilePath)
 		{
@@ -75,17 +73,6 @@ namespace DFQtoJSONConverter
 
 				if (part != null)
 				{
-					if (_currentPart != part && _currentPart != null)
-					{
-						//assign characteristics to _current part
-						_currentPart.Characteristics = Characteristics.Where(p => string.IsNullOrEmpty(p.PartNumber) && !string.IsNullOrEmpty(p.Number));
-
-						foreach (var currentPartCharacteristic in _currentPart.Characteristics)
-						{
-							currentPartCharacteristic.PartNumber = _currentPart.Number;
-						}
-					}
-
 					Parts.Add(part);
 					_currentPart = part;
 				}
@@ -93,15 +80,28 @@ namespace DFQtoJSONConverter
 			{
 				//process characteristic data
 				CharacteristicConverter.Convert(block, Characteristics.ToArray());
-			}else if (firstLine.StartsWith("K00") || char.IsNumber(firstLine[0]))
+			}
+			else if (firstLine.StartsWith("K00") || char.IsNumber(firstLine[0]))
 			{
+				if (_currentPart == null)
+				{
+					throw new Exception("Invalid key structure. Part information should be processed before any measurements.");
+				}
 				//process value portion
-				//todo part and characteristic are considered finished now so make sure we got all processed characteristics assigned to current part
-				var measured = MeasurementConverter.Convert(block);
+				//part and characteristic sections are considered finished now so make sure we got all processed characteristics assigned to current part
+				if (_currentPart.Characteristics == null)
+				{
+					//assign characteristics to _current part
+					_currentPart.Characteristics = Characteristics.Where(p => string.IsNullOrEmpty(p.PartNumber) && !string.IsNullOrEmpty(p.Number)).ToArray();
+
+					foreach (var currentPartCharacteristic in _currentPart.Characteristics)
+					{
+						currentPartCharacteristic.PartNumber = _currentPart.Number;
+					}
+				}
+				MeasurementConverter.Convert(block, _currentPart.Characteristics);
 			}
 		}
-
-		private Part _currentPart;
 
 		public string GetJson()
 		{
