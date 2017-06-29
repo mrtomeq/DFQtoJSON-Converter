@@ -44,7 +44,11 @@ namespace DFQtoJSONConverter.Measurements
 
 		public static void ProcessLineStructure2(string valueLine, Characteristic[] characteristics)
 		{
-			var keyValues = valueLine.Split('/');
+			var spaceIndex = valueLine.IndexOf(' ');
+			var key = valueLine.Substring(0, spaceIndex);
+			var value = valueLine.Substring(spaceIndex + 1);
+
+			var keyValues = key.Split('/');
 			int characteristicNumber;
 
 			if (!int.TryParse(keyValues[1], out characteristicNumber)) return;
@@ -54,12 +58,12 @@ namespace DFQtoJSONConverter.Measurements
 				//assign the same value to all characteristics
 				foreach (var characteristic in characteristics)
 				{
-					ProcessMeasurement(keyValues[0], keyValues[1], characteristic);
+					ProcessMeasurement(keyValues[0], value, characteristic);
 				}
 			}
 			else
 			{
-				ProcessMeasurement(keyValues[0], keyValues[1], characteristics[characteristicNumber - 1]);
+				ProcessMeasurement(keyValues[0], value, characteristics[characteristicNumber - 1]);
 			}
 		}
 
