@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace DFQtoJSONConverter
 {
@@ -6,100 +7,96 @@ namespace DFQtoJSONConverter
 	{
 		public static DateTime Convert(string date)
 		{
-			DateTime returnDate = DateTime.MinValue;
+			var dateFormat = GetDateFormat(date);
+
+			if (string.IsNullOrEmpty(dateFormat)) return DateTime.MinValue;
+
+			var timeFormat = GetTimeFormat(date);
+
+			var dateTimeFormat = string.IsNullOrEmpty(timeFormat) ? $"{dateFormat}" : $"{dateFormat}/{timeFormat}";
+
+			return DateTime.ParseExact(date.ToUpper(), dateTimeFormat, System.Globalization.CultureInfo.InvariantCulture);
+		}
+
+		public static string GetDateFormat(string date)
+		{
 			var dateTimeStr = date.Split('/');
-			
 			if (dateTimeStr[0].Contains("."))
 			{
 				//DD.MM.YY or DD.MM.YYYY
-				returnDate = ParseDotFormat(dateTimeStr[0]);
+				var timeStr = dateTimeStr[0].Split('.');
+				return string.Format("{0}.{1}.{2}",
+					timeStr[0].Length == 2 ? "dd" : "d",
+					timeStr[1].Length == 2 ? "MM" : "M",
+					timeStr[2].Length == 4 ? "yyyy" : "yy"
+				);
 			}
-			else if (dateTimeStr[0].Contains("-"))
+
+			if (dateTimeStr[0].Contains("-"))
 			{
 				//YY.MM.DD or YYYY.MM.DD
-				returnDate = ParseDashFormat(dateTimeStr[0]);
+				var timeStr = dateTimeStr[0].Split('-');
+				return string.Format("{0}-{1}-{2}",
+					timeStr[0].Length == 4 ? "yyyy" : "yy",
+					timeStr[1].Length == 2 ? "MM" : "M",
+					timeStr[2].Length == 2 ? "dd" : "d"
+				);
 			}
-			else if (dateTimeStr.Length >= 3)
+
+			if (dateTimeStr.Length >= 3)
 			{
 				//MM/DD/YY and MM/DD/YYYY
-				returnDate = ParseSlashFormat(date);
+				return string.Format("{0}/{1}/{2}",
+					dateTimeStr[0].Length == 2 ? "MM" : "M",
+					dateTimeStr[1].Length == 2 ? "dd" : "d",
+					dateTimeStr[2].Length == 4 ? "yyyy" : "yy"
+				);
 			}
 
-			//todo parse time
-
-			return returnDate;
+			return null;
 		}
 
-		private static DateTime ParseDotFormat(string date)
-		{
-			var dateStr = date.Split('.');
-
-			if (dateStr.Length != 3) return DateTime.MinValue;
-
-			if (int.TryParse(dateStr[2], out int year))
-			{
-				if (year < 100)
-				{
-					year += 2000;
-				}
-			}
-
-			int.TryParse(dateStr[1], out int month);
-			int.TryParse(dateStr[0], out int day);
-
-			return new DateTime(
-				year,
-				month == 0 ? 1 : month,
-				day == 0 ? 1 : day
-			);
-		}
-
-		private static DateTime ParseDashFormat(string date)
-		{
-			var dateStr = date.Split('-');
-
-			if (dateStr.Length != 3) return DateTime.MinValue;
-
-			if (int.TryParse(dateStr[0], out int year))
-			{
-				if (year < 100)
-				{
-					year += 2000;
-				}
-			}
-
-			int.TryParse(dateStr[1], out int month);
-			int.TryParse(dateStr[2], out int day);
-
-			return new DateTime(
-				year,
-				month == 0 ? 1 : month,
-				day == 0 ? 1 : day
-			);
-		}
-
-		private static DateTime ParseSlashFormat(string date)
+		public static string GetTimeFormat(string date)
 		{
 			var dateTimeStr = date.Split('/');
 
-			if (dateTimeStr.Length < 3) return DateTime.MinValue;
+			if (dateTimeStr.Length == 3)
+				return null;
 
-			if (int.TryParse(dateTimeStr[2], out int year))
-			{
-				if (year < 100)
-				{
-					year += 2000;
-				}
-			}
+			dateTimeStr = dateTimeStr.Last().Split(':');
 
-			int.TryParse(dateTimeStr[0], out int month);
-			int.TryParse(dateTimeStr[1], out int day);
+			if (dateTimeStr.Length == 1 && dateTimeStr[0].Length <= 2)
+				return string.Format("{0}", dateTimeStr[0].Length == 2 ? "HH" : "H"
+				);
 
-			return new DateTime(
-				year,
-				month == 0 ? 1 : month,
-				day == 0 ? 1 : day
-			);
+			if (dateTimeStr.Length == 2)
+				return string.Format("{0}:{1}",
+					dateTimeStr[0].Length == 2 ? "HH" : "H",
+					dateTimeStr[1].Length == 2 ? "mm" : "m"
+				);
+
+			if (dateTimeStr.Last().EndsWith("m"))
+				return string.Format("{0}:{1}:{2}",
+					dateTimeStr[0].Length == 2 ? "hh" : "h",
+					dateTimeStr[1].Length == 2 ? "mm" : "m",
+					dateTimeStr[2].Length == 4 ? "sstt" : "stt"
+				);
+
+			if (dateTimeStr.Last().EndsWith("a") || dateTimeStr.Last().EndsWith("p"))
+				return string.Format("{0}:{1}:{2}",
+					dateTimeStr[0].Length == 2 ? "hh" : "h",
+					dateTimeStr[1].Length == 2 ? "mm" : "m",
+					dateTimeStr[2].Length == 3 ? "sst" : "st"
+				);
+
+			if (dateTimeStr.Length == 3)
+				return string.Format("{0}:{1}:{2}",
+					dateTimeStr[0].Length == 2 ? "HH" : "H",
+					dateTimeStr[1].Length == 2 ? "mm" : "m",
+					dateTimeStr[2].Length == 2 ? "ss" : "s"
+				);
+
+			return null;
 		}
 	}
 }
