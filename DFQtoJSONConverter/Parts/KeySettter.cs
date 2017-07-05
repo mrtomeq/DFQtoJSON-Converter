@@ -33,8 +33,8 @@ namespace DFQtoJSONConverter.Parts
 				{"K1015", SetTypeOfTest},
 				{"K1016", SetAssemblyPart},
 				{"K1017", SetTestPlanStatus},
-				{"K1020", SetManufacturerCatalogue },
-				{"K1021", SetManufacturerNumberText },
+				{"K1020", SetManufacturerCatalogue},
+				{"K1021", SetManufacturerNumberText},
 				{"K1022", SetManufacturerDescription},
 				{"K1023", SetManufacturerNumber},
 				{"K1030", SetMaterialCatalogue},
@@ -51,11 +51,11 @@ namespace DFQtoJSONConverter.Parts
 				{"K1047", SetBasicDrawingNumber},
 				{"K1048", SetCadDrawingFileName},
 				{"K1050", SetContractorCatalogue},
-				{"K1051", SetContractorNumberText },
-				{"K1052", SetContractorDescription },
-				{"K1053", SetContract },
-				{"K1054", SetContractorNumber },
-				{"K1060", SetCustomerCatalogue },
+				{"K1051", SetContractorNumberText},
+				{"K1052", SetContractorDescription},
+				{"K1053", SetContract},
+				{"K1054", SetContractorNumber},
+				{"K1060", SetCustomerCatalogue},
 				{"K1061", SetCustomerNumberText},
 				{"K1062", SetCustomerDescription},
 				{"K1063", SetCustomerNumber},
@@ -80,41 +80,72 @@ namespace DFQtoJSONConverter.Parts
 				{"K1105", SetDivisionNumber},
 				{"K1106", SetDepartmentNumber},
 				{"K1107", SetWorkshopNumber},
-				{"K1108", SetCostCentreNumber },
-				{"K1110", SetOrderNumber },
-				{"K1111", SetGoodsReceivedNumber },
-				{"K1112", SetCube },
-				{"K1113", SetLocation },
-				{"K1114", SetDevice },
-				{"K1115", SetProductionDate },
-				{"K1201", SetTestFacilityNumberText },
-				{"K1202", SetTestFacilityDescription },
-				{"K1203", SetReasonForTest },
-				{"K1204", SetTestBegin },
-				{"K1205", SetTestEnd },
-				{"K1206", SetTestLocation },
-				{"K1207", SetTestPlanDeveloper },
-				{"K1208", SetTestFacilityNumber },
-				{"K1209", SetInspectionType },
-				{"K1210", SetMeasurementType },
-				{"K1211", SetStandardMasterNumberText },
-				{"K1212", SetStandardMasterDescription },
-				{"K1215", SetStandardMasterNumber },
-				{"K1221", SetInspectorNumberText },
-				{"K1222", SetInspectorName },
-				{"K1223", SetInspectorNumber },
-				{"K1230", SetGageRoom },
-				{"K1231", SetMeasurementProgramNumber },
-				{"K1301", SetClient },
-				{"K1302", SetTestBatch },
-				{"K1303", SetPlant },
-				{"K1304", SetPlantNumber },
+				{"K1108", SetCostCentreNumber},
+				{"K1110", SetOrderNumber},
+				{"K1111", SetGoodsReceivedNumber},
+				{"K1112", SetCube},
+				{"K1113", SetLocation},
+				{"K1114", SetDevice},
+				{"K1115", SetProductionDate},
+				{"K1201", SetTestFacilityNumberText},
+				{"K1202", SetTestFacilityDescription},
+				{"K1203", SetReasonForTest},
+				{"K1204", SetTestBegin},
+				{"K1205", SetTestEnd},
+				{"K1206", SetTestLocation},
+				{"K1207", SetTestPlanDeveloper},
+				{"K1208", SetTestFacilityNumber},
+				{"K1209", SetInspectionType},
+				{"K1210", SetMeasurementType},
+				{"K1211", SetStandardMasterNumberText},
+				{"K1212", SetStandardMasterDescription},
+				{"K1215", SetStandardMasterNumber},
+				{"K1221", SetInspectorNumberText},
+				{"K1222", SetInspectorName},
+				{"K1223", SetInspectorNumber},
+				{"K1230", SetGageRoom},
+				{"K1231", SetMeasurementProgramNumber},
+				{"K1301", SetClient},
+				{"K1302", SetTestBatch},
+				{"K1303", SetPlant},
+				{"K1304", SetPlantNumber},
 				{"K1311", SetProductionOrder},
 				{"K1341", SetTestPlanNumberText},
 				{"K1342", SetTestPlanName},
 				{"K1343", SetTestPlanCreationDate},
 				{"K1344", SetTestPlanCreator},
-				
+				{"K1350", SetOutputReportFile},
+				{"K1800", SetUserFieldDescription1},
+				{"K1801", SetUserFieldType1},
+				{"K1802", SetUserFieldContent1},
+				{"K1810", SetUserFieldDescription2},
+				{"K1811", SetUserFieldType2},
+				{"K1812", SetUserFieldContent2},
+				{"K1820", SetUserFieldDescription3},
+				{"K1821", SetUserFieldType3},
+				{"K1822", SetUserFieldContent3},
+				{"K1830", SetUserFieldDescription4},
+				{"K1831", SetUserFieldType4},
+				{"K1832", SetUserFieldContent4},
+				{"K1840", SetUserFieldDescription5},
+				{"K1841", SetUserFieldType5},
+				{"K1842", SetUserFieldContent5},
+				{"K1850", SetUserFieldDescription6},
+				{"K1851", SetUserFieldType6},
+				{"K1852", SetUserFieldContent6},
+				{"K1860", SetUserFieldDescription7},
+				{"K1861", SetUserFieldType7},
+				{"K1862", SetUserFieldContent7},
+				{"K1870", SetUserFieldDescription8},
+				{"K1871", SetUserFieldType8},
+				{"K1872", SetUserFieldContent8},
+				{"K1880", SetUserFieldDescription9},
+				{"K1881", SetUserFieldType9},
+				{"K1882", SetUserFieldContent9},
+				{"K1890", SetUserFieldDescription10},
+				{"K1891", SetUserFieldType10},
+				{"K1892", SetUserFieldContent10}
+
 				//{"K8500", SubgroupSize},
 				//{"K8501", SubgroupType}
 			};
@@ -690,18 +721,159 @@ namespace DFQtoJSONConverter.Parts
 			part.TestPlanCreator = value;
 		}
 
+		public static void SetOutputReportFile(string value, Part part)
+		{
+			part.OutputReportFile = value;
+		}
 
-		/*
-		 * 
-		 *    I3 = Integer (1 Byte)
-			o I5 = Integer (2 Byte)
-			o I10 = Integer (4 Byte)
-			o F = Float
-			o D = Date/Time format
-			o A = Alpha numerical
-			o S = special coding
-		 * 
-		 */
+		public static void SetUserFieldDescription1(string value, Part part)
+		{
+			part.UserFieldDescription1 = value;
+		}
 
+		public static void SetUserFieldType1(string value, Part part)
+		{
+			part.UserFieldType1 = value;
+		}
+
+		public static void SetUserFieldContent1(string value, Part part)
+		{
+			part.UserFieldContent1 = value;
+		}
+
+		public static void SetUserFieldDescription2(string value, Part part)
+		{
+			part.UserFieldDescription2 = value;
+		}
+
+		public static void SetUserFieldType2(string value, Part part)
+		{
+			part.UserFieldType2 = value;
+		}
+
+		public static void SetUserFieldContent2(string value, Part part)
+		{
+			part.UserFieldContent2 = value;
+		}
+
+		public static void SetUserFieldDescription3(string value, Part part)
+		{
+			part.UserFieldDescription3 = value;
+		}
+
+		public static void SetUserFieldType3(string value, Part part)
+		{
+			part.UserFieldType3 = value;
+		}
+
+		public static void SetUserFieldContent3(string value, Part part)
+		{
+			part.UserFieldContent3 = value;
+		}
+
+		public static void SetUserFieldDescription4(string value, Part part)
+		{
+			part.UserFieldDescription4 = value;
+		}
+
+		public static void SetUserFieldType4(string value, Part part)
+		{
+			part.UserFieldType4 = value;
+		}
+
+		public static void SetUserFieldContent4(string value, Part part)
+		{
+			part.UserFieldContent4 = value;
+		}
+
+		public static void SetUserFieldDescription5(string value, Part part)
+		{
+			part.UserFieldDescription5 = value;
+		}
+
+		public static void SetUserFieldType5(string value, Part part)
+		{
+			part.UserFieldType5 = value;
+		}
+
+		public static void SetUserFieldContent5(string value, Part part)
+		{
+			part.UserFieldContent5 = value;
+		}
+
+		public static void SetUserFieldDescription6(string value, Part part)
+		{
+			part.UserFieldDescription6 = value;
+		}
+
+		public static void SetUserFieldType6(string value, Part part)
+		{
+			part.UserFieldType6 = value;
+		}
+
+		public static void SetUserFieldContent6(string value, Part part)
+		{
+			part.UserFieldContent6 = value;
+		}
+
+		public static void SetUserFieldDescription7(string value, Part part)
+		{
+			part.UserFieldDescription7 = value;
+		}
+
+		public static void SetUserFieldType7(string value, Part part)
+		{
+			part.UserFieldType7 = value;
+		}
+
+		public static void SetUserFieldContent7(string value, Part part)
+		{
+			part.UserFieldContent7 = value;
+		}
+
+		public static void SetUserFieldDescription8(string value, Part part)
+		{
+			part.UserFieldDescription8 = value;
+		}
+
+		public static void SetUserFieldType8(string value, Part part)
+		{
+			part.UserFieldType8 = value;
+		}
+
+		public static void SetUserFieldContent8(string value, Part part)
+		{
+			part.UserFieldContent8 = value;
+		}
+
+		public static void SetUserFieldDescription9(string value, Part part)
+		{
+			part.UserFieldDescription9 = value;
+		}
+
+		public static void SetUserFieldType9(string value, Part part)
+		{
+			part.UserFieldType9 = value;
+		}
+
+		public static void SetUserFieldContent9(string value, Part part)
+		{
+			part.UserFieldContent9 = value;
+		}
+
+		public static void SetUserFieldDescription10(string value, Part part)
+		{
+			part.UserFieldDescription10 = value;
+		}
+
+		public static void SetUserFieldType10(string value, Part part)
+		{
+			part.UserFieldType10 = value;
+		}
+
+		public static void SetUserFieldContent10(string value, Part part)
+		{
+			part.UserFieldContent10 = value;
+		}
 	}
 }

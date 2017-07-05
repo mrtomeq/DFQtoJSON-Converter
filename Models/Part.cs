@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Models
@@ -8,54 +7,105 @@ namespace Models
 	{
 		public Characteristic[] Characteristics { get; set; }
 
+		/// <summary>
+		/// K1001
+		/// </summary>
 		[Display(Name = "K1001", Description = "Part number")]
 		public string Number { get; set; }
 
+		/// <summary>
+		/// K1002
+		/// </summary>
 		[Display(Name = "K1002", Description = "Part description")]
 		public string Description { get; set; }
 
+		/// <summary>
+		/// K1003
+		/// </summary>
 		[Display(Name = "K1003", Description = "Part abbreviation")]
 		public string Abbreviation { get; set; }
 
+		/// <summary>
+		/// K1004
+		/// </summary>
 		[Display(Name = "K1004", Description = "Part Amendment status")]
 		public string AmendmentStatus { get; set; }
 
+		/// <summary>
+		/// K1005
+		/// </summary>
 		[Display(Name = "K1005", Description = "Product")]
 		public string Product { get; set; }
 
+		/// <summary>
+		/// K1007
+		/// </summary>
 		[Display(Name = "K1007", Description = "Part number - short description")]
 		public string NumberShort { get; set; }
 
+		/// <summary>
+		/// K1008
+		/// </summary>
 		[Display(Name = "K1008", Description = "Part type")]
 		public string Type { get; set; }
 
+		/// <summary>
+		/// K1009
+		/// </summary>
 		[Display(Name = "K1009", Description = "Part Code")]
 		public string Code { get; set; }
 
+		/// <summary>
+		/// K1010
+		/// </summary>
 		[Display(Name = "K1010", Description = "Control Item")]
 		public int ControlItem { get; set; }
 
+		/// <summary>
+		/// K1011
+		/// </summary>
 		[Display(Name = "K1011", Description = "Version")]
 		public string Version { get; set; }
 
+		/// <summary>
+		/// K1012
+		/// </summary>
 		[Display(Name = "K1012", Description = "ID Number Annex")]
 		public string AnnexId { get; set; }
 
+		/// <summary>
+		/// K1013
+		/// </summary>
 		[Display(Name = "K1013", Description = "ID Number Index")]
 		public string IndexId { get; set; }
 
+		/// <summary>
+		/// K1014
+		/// </summary>
 		[Display(Name = "K1014", Description = "Part Ident")]
 		public string Ident { get; set; }
 
+		/// <summary>
+		/// K1015
+		/// </summary>
 		[Display(Name = "K1015", Description = "Type Of test")]
 		public int TypeOfTest { get; set; }
 
+		/// <summary>
+		/// K1016
+		/// </summary>
 		[Display(Name = "K1016", Description = "Assembly Part")]
 		public string AssemblyPart { get; set; }
 
+		/// <summary>
+		/// K1017
+		/// </summary>
 		[Display(Name = "K1017", Description = "Test Plan Status")]
 		public int TestPlanStatus { get; set; }
 
+		/// <summary>
+		/// K1020
+		/// </summary>
 		[Display(Name = "K1020", Description = "Manufacturer Catalogue")]
 		public int ManufacturerCatalogue { get; set; }
 
@@ -306,6 +356,103 @@ namespace Models
 
 		[Display(Name = "K1350", Description = "Output Report File")]
 		public string OutputReportFile { get; set; }
+
+		[Display(Name = "K1800", Description = "User Field Description 1")]
+		public string UserFieldDescription1 { get; set; }
+
+		[Display(Name = "K1801", Description = "User Field Type 1")]
+		public string UserFieldType1 { get; set; }
+
+		[Display(Name = "K1802", Description = "User Field Content 1")]
+		public string UserFieldContent1 { get; set; }
+
+		[Display(Name = "K1810", Description = "User Field Description 2")]
+		public string UserFieldDescription2 { get; set; }
+
+		[Display(Name = "K1811", Description = "User Field Type 2")]
+		public string UserFieldType2 { get; set; }
+
+		[Display(Name = "K1812", Description = "User Field Content 2")]
+		public string UserFieldContent2 { get; set; }
+
+		[Display(Name = "K1820", Description = "User Field Description 3")]
+		public string UserFieldDescription3 { get; set; }
+
+		[Display(Name = "K1821", Description = "User Field Type 3")]
+		public string UserFieldType3 { get; set; }
+
+		[Display(Name = "K1822", Description = "User Field Content 3")]
+		public string UserFieldContent3 { get; set; }
+
+		[Display(Name = "K1830", Description = "User Field Description 4")]
+		public string UserFieldDescription4 { get; set; }
+
+		[Display(Name = "K1831", Description = "User Field Type 4")]
+		public string UserFieldType4 { get; set; }
+
+		[Display(Name = "K1832", Description = "User Field Content 4")]
+		public string UserFieldContent4 { get; set; }
+
+		[Display(Name = "K1840", Description = "User Field Description 5")]
+		public string UserFieldDescription5 { get; set; }
+
+		[Display(Name = "K1841", Description = "User Field Type 5")]
+		public string UserFieldType5 { get; set; }
+
+		[Display(Name = "K1842", Description = "User Field Content 5")]
+		public string UserFieldContent5 { get; set; }
+
+		[Display(Name = "K1850", Description = "User Field Description 6")]
+		public string UserFieldDescription6 { get; set; }
+
+		[Display(Name = "K1851", Description = "User Field Type 6")]
+		public string UserFieldType6 { get; set; }
+
+		[Display(Name = "K1852", Description = "User Field Content 6")]
+		public string UserFieldContent6 { get; set; }
+
+		[Display(Name = "K1860", Description = "User Field Description 7")]
+		public string UserFieldDescription7 { get; set; }
+
+		[Display(Name = "K1861", Description = "User Field Type 7")]
+		public string UserFieldType7 { get; set; }
+
+		[Display(Name = "K1862", Description = "User Field Content 7")]
+		public string UserFieldContent7 { get; set; }
+
+		[Display(Name = "K1870", Description = "User Field Description 8")]
+		public string UserFieldDescription8 { get; set; }
+
+		[Display(Name = "K1871", Description = "User Field Type 8")]
+		public string UserFieldType8 { get; set; }
+
+		[Display(Name = "K1872", Description = "User Field Content 8")]
+		public string UserFieldContent8 { get; set; }
+
+		[Display(Name = "K1880", Description = "User Field Description 9")]
+		public string UserFieldDescription9 { get; set; }
+
+		[Display(Name = "K1881", Description = "User Field Type 9")]
+		public string UserFieldType9 { get; set; }
+
+		[Display(Name = "K1882", Description = "User Field Content 9")]
+		public string UserFieldContent9 { get; set; }
+
+		[Display(Name = "K1890", Description = "User Field Description 10")]
+		public string UserFieldDescription10 { get; set; }
+
+		[Display(Name = "K1891", Description = "User Field Type 10")]
+		public string UserFieldType10 { get; set; }
+
+		[Display(Name = "K1892", Description = "User Field Content 10")]
+		public string UserFieldContent10 { get; set; }
+
+		[Display(Name = "K1900", Description = "Remark")]
+		public string Remark { get; set; }
+
+		[Display(Name = "K1997", Description = "Part GUID")]
+		public Guid PartGuid { get; set; }
+
 
 
 
