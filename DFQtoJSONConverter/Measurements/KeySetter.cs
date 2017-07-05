@@ -74,7 +74,8 @@ namespace DFQtoJSONConverter.Measurements
 			}
 		}
 
-		public static readonly Dictionary<string, Action<string, MeasuredValues>> KeyLookup = new Dictionary<string, Action<string, MeasuredValues>>
+		public static readonly Dictionary<string, Action<string, MeasuredValues>> KeyLookup =
+			new Dictionary<string, Action<string, MeasuredValues>>
 			{
 				{"K0001", SetValue},
 				{"K0002", SetAttribute},
@@ -115,9 +116,11 @@ namespace DFQtoJSONConverter.Measurements
 
 		public static void SetDateTime(string value, MeasuredValues measured)
 		{
-			if (DateTime.TryParse(value, out DateTime result))
+			var date = DateConverter.Convert(value);
+
+			if (date != DateTime.MinValue)
 			{
-				measured.DateTime = result;
+				measured.DateTime = date;
 			}
 		}
 
