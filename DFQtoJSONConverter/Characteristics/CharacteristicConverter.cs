@@ -5,6 +5,8 @@ namespace DFQtoJSONConverter.Characteristics
 {
 	public static class CharacteristicConverter
 	{
+		public static KeySetter<Characteristic> CharacteristicKeySetter = new KeySetter<Characteristic>();
+
 		public static void Convert(IEnumerable<string> block, Characteristic[] characteristics)
 		{
 			foreach (var line in block)
@@ -32,7 +34,7 @@ namespace DFQtoJSONConverter.Characteristics
 
 			for (var index = 0; index < values.Length; index++)
 			{
-				KeySetter.SetProperty(key, values[index], characteristics[index]);
+				CharacteristicKeySetter.SetProperty(key, values[index], characteristics[index]);
 			}
 		}
 
@@ -48,12 +50,12 @@ namespace DFQtoJSONConverter.Characteristics
 				//assign the same value to all characteristics
 				foreach (var characteristic in characteristics)
 				{
-					KeySetter.SetProperty(keyValues[0], valueLine, characteristic);
+					CharacteristicKeySetter.SetProperty(keyValues[0], valueLine, characteristic);
 				}
 			}
 			else
 			{
-				KeySetter.SetProperty(keyValues[0], valueLine, characteristics[characteristicNumber-1]);
+				CharacteristicKeySetter.SetProperty(keyValues[0], valueLine, characteristics[characteristicNumber-1]);
 			}
 		}
 	}

@@ -5,6 +5,8 @@ namespace DFQtoJSONConverter.Parts
 {
 	public static class PartConverter
 	{
+		public static KeySetter<Part> PartKeySetter = new KeySetter<Part>();
+
 		public static Part Convert(IEnumerable<string> block)
 		{
 			var part = new Part();
@@ -13,7 +15,7 @@ namespace DFQtoJSONConverter.Parts
 			{
 				var values = line.Split(' ');
 
-				KeySettter.SetProperty(values[0], values[1], part);
+				PartKeySetter.SetProperty(values[0], values[1], part);
 			}
 
 			return part;
