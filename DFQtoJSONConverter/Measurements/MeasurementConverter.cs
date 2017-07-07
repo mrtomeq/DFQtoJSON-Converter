@@ -70,7 +70,7 @@ namespace DFQtoJSONConverter.Measurements
 		private static void ProcessMeasurement(string key, string value, Characteristic characteristic)
 		{
 			//value k0001 will start new measuremet, if it is already set we need to create new measValue object
-			var lastMeasurement = characteristic.Measurements.Last();
+			var lastMeasurement = characteristic.Measurements.LastOrDefault();
 			if (KeySetter.IsNewMeasurement(key, lastMeasurement))
 			{
 				lastMeasurement = new MeasuredValues();

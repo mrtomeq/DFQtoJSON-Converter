@@ -1,9 +1,9 @@
-K0100 2
+K0100 8
 K1001 partNumber1
 K1002 partDescription1
 K1022 Company
-K1044 
-K1062 Departament
+K1044 123
+K1062 department
 K1311 Model
 
 K8500 1

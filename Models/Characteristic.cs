@@ -9,9 +9,15 @@ namespace Models
 		public string PartNumber { get; set; }
 		public IList<MeasuredValues> Measurements { get; set; } = new List<MeasuredValues>();
 
+		/// <summary>
+		/// K2001
+		/// </summary>
 		[Display(Name = "K2001", Description = "Characteristic number")]
 		public string Number { get; set; }
 
+		/// <summary>
+		/// K2002
+		/// </summary>
 		[Display(Name = "K2002", Description = "Characteristic description")]
 		public string Description { get; set; }
 
@@ -208,6 +214,9 @@ namespace Models
 		[Display(Name = "K2100", Description = "Target Value")]
 		public float TargetValue { get; set; }
 
+		/// <summary>
+		/// K2101 - Nominal Value
+		/// </summary>
 		[Display(Name = "K2101", Description = "Nominal Value")]
 		public float NominalValue { get; set; }
 
@@ -223,9 +232,15 @@ namespace Models
 		[Display(Name = "K2105", Description = "Parts OK At Censoring")]
 		public int PartsOkAtCensoring { get; set; }
 
+		/// <summary>
+		/// K2110 - Upper Specification Limit
+		/// </summary>
 		[Display(Name = "K2110", Description = "Lower Specification Limit")]
 		public float LowerSpecificationLimit { get; set; }
 
+		/// <summary>
+		/// K2111 - Upper Specification Limit
+		/// </summary>
 		[Display(Name = "K2111", Description = "Upper Specification Limit")]
 		public float UpperSpecificationLimit { get; set; }
 
@@ -268,12 +283,142 @@ namespace Models
 		[Display(Name = "K2137", Description = "Number Of Classes")]
 		public int NumberOfClasses { get; set; }
 
+		[Display(Name = "K2138", Description = "Classification Source")]
+		public int ClassificationSource { get; set; }
+
+		[Display(Name = "K2139", Description = "Classification Model Source")]
+		public int ClassificationModelSource { get; set; }
+
+		[Display(Name = "K2141", Description = "Unit")]
+		public int Unit { get; set; }
+
+		/// <summary>
+		/// K2142 - Unit Description
+		/// </summary>
+		[Display(Name = "K2142", Description = "Unit Description")]
+		public string UnitDescription { get; set; }
+
+		[Display(Name = "K2143", Description = "Unit Relative Axis")]
+		public string UnitRelativeAxis { get; set; }
+
+		/// <summary>
+		/// K2144 - Addition Constant Relative Axis
+		/// </summary>
+		[Display(Name = "K2144", Description = "Addition Constant Relative Axis")]
+		public float AdditionConstantRelativeAxis { get; set; }
+
+		/// <summary>
+		/// K2145 - Multiplication Factor Relative Axis
+		/// </summary>
+		[Display(Name = "K2145", Description = "Multiplication Factor Relative Axis")]
+		public float MultiplicationFactorRelativeAxis { get; set; }
+
+		/// <summary>
+		/// K2146 - Decimal Places Relative Axis
+		/// </summary>
+		[Display(Name = "K2146", Description = "Decimal Places Relative Axis")]
+		public int DecimalPlacesRelativeAxis { get; set; }
+
+		/// <summary>
+		/// K2151 -Tolerance(as Text)
+		/// </summary>
+		[Display(Name = "K2151", Description = "Tolerance(as Text)")]
+		public string ToleranceText { get; set; }
+
+		/// <summary>
+		/// K2152 - Calculated Tolerance
+		/// </summary>
+		[Display(Name = "K2152", Description = "Calculated Tolerance")]
+		public float CalculatedTolerance { get; set; }
+
+		/// <summary>
+		/// K2160 - Batch Size
+		/// </summary>
+		[Display(Name = "K2160", Description = "Batch Size")]
+		public int BatchSize { get; set; }
+
+		/// <summary>
+		/// K2161 - Re-work Cost
+		/// </summary>
+		[Display(Name = "K2161", Description = "Re-work Cost")]
+		public float ReworkCost { get; set; }
+
+		/// <summary>
+		/// K2162 - Rejects Cost
+		/// </summary>
+		[Display(Name = "K2162", Description = "Rejects Cost")]
+		public float RejectsCost { get; set; }
+
+		/// <summary>
+		/// K2163 -Error Cost
+		/// </summary>
+		[Display(Name = "K2163", Description = "Error Cost")]
+		public float ErrorCost { get; set; }
+
+		/// <summary>
+		/// K2170 - Censoring Point In Time
+		/// </summary>
+		[Display(Name = "K2170", Description = "Censoring Point In Time")]
+		public float CensoringPointInTime { get; set; }
+
+		/// <summary>
+		/// K2171 - Extrapolation
+		/// </summary>
+		[Display(Name = "K2171", Description = "Extrapolation")]
+		public float Extrapolation { get; set; }
+
+		/// <summary>
+		/// K2172 - Permitted Failure Rate
+		/// </summary>
+		[Display(Name = "K2172", Description = "Permitted Failure Rate")]
+		public float PermittedFailureRate { get; set; }
+
+		/// <summary>
+		/// K2173 - Failure Free Time
+		/// </summary>
+		[Display(Name = "K2173", Description = "Failure Free Time")]
+		public float FailureFreeTime { get; set; }
+
+		/// <summary>
+		/// K2174 - Parts In The Field
+		/// </summary>
+		[Display(Name = "K2174", Description = "Parts In The Field")]
+		public int PartsInTheField { get; set; }
+
+		/// <summary>
+		/// K2175 - Conditions For Frequency Sums
+		/// </summary>
+		[Display(Name = "K2175", Description = "Conditions For Frequency Sums")]
+		public int ConditionsForFrequencySums { get; set; }
+
+		/// <summary>
+		/// K2176 - Life Distance After Eckel
+		/// </summary>
+		[Display(Name = "K2176", Description = "Life Distance After Eckel")]
+		public int LifeDistanceAfterEckel { get; set; }
+
+		/// <summary>
+		/// K2177 - Life Time X2
+		/// </summary>
+		[Display(Name = "K2177", Description = "Life time X2")]
+		public float LifeTimeX1 { get; set; }
+
+		/// <summary>
+		/// K2178 - Life Time X2
+		/// </summary>
+		[Display(Name = "K2178", Description = "Life Time X2")]
+		public float LifeTimeX2 { get; set; }
+
+		/// <summary>
+		/// K2180 - Weibull Parameter B
+		/// </summary>
+		[Display(Name = "K2180", Description = "Weibull Parameter B")]
+		public float WeibullParameterB { get; set; }
 
 
 
 
-
-		[Display(Name = "K2402", Description = "Characteristic description")]
+		[Display(Name = "K2402", Description = "Gage Description")]
 		public string GageDescription { get; set; }
 	}
 }

@@ -5,27 +5,51 @@ namespace Models
 {
 	public class MeasuredValues
 	{
+		/// <summary>
+		/// K0001 - Value
+		/// </summary>
 		[Display(Name = "K0001", Description = "Value")]
 		public float? Value { get; set; }
 
+		/// <summary>
+		/// K0002 - Attribute
+		/// </summary>
 		[Display(Name = "K0002", Description = "Attribute")]
 		public int Attribute { get; set; }
 
+		/// <summary>
+		/// "K0004 - Date Time
+		/// </summary>
 		[Display(Name = "K0004", Description = "Date Time")]
 		public DateTime DateTime { get; set; }
 
+		/// <summary>
+		/// K0005 - Events
+		/// </summary>
 		[Display(Name = "K0005", Description = "Events")]
 		public string Events { get; set; }
 
+		/// <summary>
+		/// K0006 - Batch Number
+		/// </summary>
 		[Display(Name = "K0006", Description = "Batch Number")]
 		public string BatchNumber { get; set; }
 
+		/// <summary>
+		/// K0007 - Cavity Number / Spindle Number
+		/// </summary>
 		[Display(Name = "K0007", Description = "Cavity Number / Spindle Number")]
 		public int SpindleNumber { get; set; }
 
+		/// <summary>
+		/// K0008 - Operator Number
+		/// </summary>
 		[Display(Name = "K0008", Description = "Operator Number")]
 		public int OperatorNumber { get; set; }
 
+		/// <summary>
+		/// K0009 - Text
+		/// </summary>
 		[Display(Name = "K0009", Description = "Text")]
 		public string Text { get; set; }
 
@@ -56,6 +80,9 @@ namespace Models
 		[Display(Name = "K0021", Description = "Number Of Errors")]
 		public int NumberOfErrors { get; set; }
 
+		/// <summary>
+		/// K0053 - Order Number
+		/// </summary>
 		[Display(Name = "K0053", Description = "Order Number")]
 		public string OrderNumber { get; set; }
 
