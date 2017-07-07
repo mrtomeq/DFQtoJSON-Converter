@@ -3,63 +3,87 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
+	public class MeasurementKeys
+	{
+		public const string Value = "K0001";
+		public const string Attribute = "K0002";
+		public const string DateTime = "K0004";
+		public const string Events = "K0005";
+		public const string BatchNumber = "K0006";
+		public const string SpindleNumber = "K0007";
+		public const string OperatorNumber = "K0008";
+		public const string Text = "K0009";
+		public const string MachineNumber = "K0010";
+		public const string ProcessParameter = "K0011";
+		public const string GageNumber = "K0012";
+	}
+
 	public class MeasuredValues
 	{
 		/// <summary>
 		/// K0001 - Value
 		/// </summary>
-		[Display(Name = "K0001", Description = "Value")]
+		[Display(Name = MeasurementKeys.Value, Description = "Value")]
 		public float? Value { get; set; }
 
 		/// <summary>
 		/// K0002 - Attribute
 		/// </summary>
-		[Display(Name = "K0002", Description = "Attribute")]
+		[Display(Name = MeasurementKeys.Attribute, Description = "Attribute")]
 		public int Attribute { get; set; }
 
 		/// <summary>
 		/// "K0004 - Date Time
 		/// </summary>
-		[Display(Name = "K0004", Description = "Date Time")]
+		[Display(Name = MeasurementKeys.DateTime, Description = "Date Time")]
 		public DateTime DateTime { get; set; }
 
 		/// <summary>
 		/// K0005 - Events
 		/// </summary>
-		[Display(Name = "K0005", Description = "Events")]
+		[Display(Name = MeasurementKeys.Events, Description = "Events")]
 		public string Events { get; set; }
 
 		/// <summary>
 		/// K0006 - Batch Number
 		/// </summary>
-		[Display(Name = "K0006", Description = "Batch Number")]
+		[Display(Name = MeasurementKeys.BatchNumber, Description = "Batch Number")]
 		public string BatchNumber { get; set; }
 
 		/// <summary>
 		/// K0007 - Cavity Number / Spindle Number
 		/// </summary>
-		[Display(Name = "K0007", Description = "Cavity Number / Spindle Number")]
+		[Display(Name = MeasurementKeys.SpindleNumber, Description = "Cavity Number / Spindle Number")]
 		public int SpindleNumber { get; set; }
 
 		/// <summary>
 		/// K0008 - Operator Number
 		/// </summary>
-		[Display(Name = "K0008", Description = "Operator Number")]
+		[Display(Name = MeasurementKeys.OperatorNumber, Description = "Operator Number")]
 		public int OperatorNumber { get; set; }
 
 		/// <summary>
 		/// K0009 - Text
 		/// </summary>
-		[Display(Name = "K0009", Description = "Text")]
+		[Display(Name = MeasurementKeys.Text, Description = "Text")]
 		public string Text { get; set; }
 
-		[Display(Name = "K0010", Description = "Machine Number")]
+		/// <summary>
+		/// K0010 - Machine Number
+		/// </summary>
+		[Display(Name = MeasurementKeys.MachineNumber, Description = "Machine Number")]
 		public int MachineNumber { get; set; }
 
-		[Display(Name = "K0011", Description = "Process Parameter")]
+		/// <summary>
+		/// K0011 - Process Parameter
+		/// </summary>
+		[Display(Name = MeasurementKeys.ProcessParameter, Description = "Process Parameter")]
 		public string ProcessParameter { get; set; }
 
-		[Display(Name = "K0012", Description = "Gage Number")]
+		/// <summary>
+		/// K0012 - Gage Number
+		/// </summary>
+		[Display(Name = MeasurementKeys.GageNumber, Description = "Gage Number")]
 		public int GageNumber { get; set; }
 
 		[Display(Name = "K0014", Description = "Part Ident")]

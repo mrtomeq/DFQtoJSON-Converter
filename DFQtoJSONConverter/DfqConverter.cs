@@ -6,6 +6,7 @@ using DFQtoJSONConverter.Characteristics;
 using DFQtoJSONConverter.Measurements;
 using DFQtoJSONConverter.Parts;
 using Models;
+using Newtonsoft.Json;
 
 namespace DFQtoJSONConverter
 {
@@ -13,7 +14,17 @@ namespace DFQtoJSONConverter
 	{
 		private Part _currentPart;
 		public IList<Part> Parts { get; set; }
-		public IList<Characteristic> Characteristics { get; set; } = new List<Characteristic>();
+		public IList<Characteristic> Characteristics { get; set; }
+
+		public string DfqFilePath { get; set; }
+
+		public void Convert()
+		{
+			if (string.IsNullOrEmpty(DfqFilePath))
+				throw new ArgumentException("DfqFilePath");
+
+			Convert(DfqFilePath);
+		}
 
 		public void Convert(string dfqFilePath)
 		{
@@ -21,6 +32,9 @@ namespace DFQtoJSONConverter
 				throw new ArgumentException("dfqFilePath");
 
 			Parts = new List<Part>();
+			Characteristics = new List<Characteristic>();
+			_currentPart = null;
+
 			var dfqFile = File.ReadAllLines(dfqFilePath);
 			var lineBlock = new List<string>();
 
@@ -105,7 +119,10 @@ namespace DFQtoJSONConverter
 
 		public string GetJson()
 		{
-			return null;
+			return JsonConvert.SerializeObject(Parts, Formatting.Indented, new JsonSerializerSettings
+			{
+				DefaultValueHandling = DefaultValueHandling.Ignore
+			});
 		}
 	}
 }

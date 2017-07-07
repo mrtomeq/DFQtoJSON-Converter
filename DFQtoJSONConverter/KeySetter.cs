@@ -25,7 +25,7 @@ namespace DFQtoJSONConverter
 				{
 					KeySetterLookup.Add(displayAttribute.Name, SetIntProperty);
 				}
-				else if (propertyInfo.PropertyType == typeof(float))
+				else if (propertyInfo.PropertyType == typeof(float) || propertyInfo.PropertyType == typeof(float?))
 				{
 					KeySetterLookup.Add(displayAttribute.Name, SetFloatProperty);
 				}
