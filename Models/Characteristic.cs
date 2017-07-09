@@ -415,6 +415,126 @@ namespace Models
 		[Display(Name = "K2180", Description = "Weibull Parameter B")]
 		public float WeibullParameterB { get; set; }
 
+		/// <summary>
+		/// K2181 - Weibull Parameter T
+		/// </summary>
+		[Display(Name = "K2181", Description = "Weibull Parameter T")]
+		public float WeibullParameterT { get; set; }
+
+		/// <summary>
+		/// K2182 - Sum probability(B(x1))
+		/// </summary>
+		[Display(Name = "K2182", Description = "Sum Probability(B(x1))")]
+		public float SumProbability1 { get; set; }
+
+		/// <summary>
+		/// K2183 - Sum Probability(B(x2))
+		/// </summary>
+		[Display(Name = "K2183", Description = "Sum Probability(B(x2))")]
+		public float SumProbability2 { get; set; }
+
+		/// <summary>
+		/// K2185 - Number Of Parts In The Field(For Eckel Method)
+		/// </summary>
+		[Display(Name = "K2185", Description = "Number Of Parts In The Field(For Eckel Method)")]
+		public int PartsInTheFieldEckel { get; set; }
+
+		/// <summary>
+		/// K2186 - Usage Time For Parts In The Field(For Eckel Method)
+		/// </summary>
+		[Display(Name = "K2186", Description = "Usage Time For Parts In The Field(For Eckel Method)")]
+		public float UsageTimeEckel { get; set; }
+
+		/// <summary>
+		/// K2201 - Process Variation
+		/// </summary>
+		[Display(Name = "K2201", Description = "Process Variation")]
+		public float ProcessVariation { get; set; }
+
+		/// <summary>
+		/// K2202 - Evaluation Type
+		/// </summary>
+		[Display(Name = "K2202", Description = "Evaluation Type")]
+		public int EvaluationType { get; set; }
+
+		/// <summary>
+		/// K2205 - Number Of Parts
+		/// </summary>
+		[Display(Name = "K2205", Description = "Number of Parts")]
+		public int NumberOfParts { get; set; }
+
+		/// <summary>
+		/// K2206 - Number Of Devices
+		/// </summary>
+		[Display(Name = "K2206", Description = "Number of Devices")]
+		public int NumberOfDevices { get; set; }
+
+		/// <summary>
+		/// K2207 - Number Of Test Intervals
+		/// </summary>
+		[Display(Name = "K2207", Description = "Number Of Test Intervals")]
+		public int NumberOfTestIntervals { get; set; }
+
+		/// <summary>
+		/// K2210 - Master Catalogue
+		/// </summary>
+		[Display(Name = "K2210", Description = "Master Catalogue")]
+		public int MasterCatalogue { get; set; }
+
+		/// <summary>
+		/// K2211 - Master Number Text
+		/// </summary>
+		[Display(Name = "K2211", Description = "Master Number Text")]
+		public string MasterNumbertext { get; set; }
+
+		/// <summary>
+		/// K2212 - Master Description
+		/// </summary>
+		[Display(Name = "K2212", Description = "Master Description")]
+		public string MasterDescription { get; set; }
+
+		/// <summary>
+		/// K2213 - Master Actual Value
+		/// </summary>
+		[Display(Name = "K2213", Description = "Master Actual Value")]
+		public float MasterActualValue { get; set; }
+
+		/// <summary>
+		/// K2214 - Master Temperature
+		/// </summary>
+		[Display(Name = "K2214", Description = "Master Temperature")]
+		public float MasterTemperature { get; set; }
+
+		/// <summary>
+		/// K2215 - Master Number
+		/// </summary>
+		[Display(Name = "K2215", Description = "Master Number")]
+		public int MasterNumber { get; set; }
+
+		/// <summary>
+		/// K2216 - Master Serial number
+		/// </summary>
+		[Display(Name = "K2216", Description = "Master –Serial number")]
+		public string MasterSerialnumber { get; set; }
+
+		/// <summary>
+		/// K2217 - Master Manufacturer
+		/// </summary>
+		[Display(Name = "K2217", Description = "Master Manufacturer")]
+		public string MasterManufacturer { get; set; }
+
+		/// <summary>
+		/// K2220 - Number Of Operators
+		/// </summary>
+		[Display(Name = "K2220", Description = "Number Of Operators")]
+		public int NumberOfOperators { get; set; }
+
+		/// <summary>
+		/// K2221 - Number Of Trials
+		/// </summary>
+		[Display(Name = "K2221", Description = "Number Of Trials")]
+		public int NumberOfTrials { get; set; }
+
 
 
 
