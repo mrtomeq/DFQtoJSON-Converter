@@ -18,7 +18,7 @@ namespace Models
 		public const string GageNumber = "K0012";
 	}
 
-	public class MeasuredValues
+	public class Measurement
 	{
 		/// <summary>
 		/// K0001 - Value

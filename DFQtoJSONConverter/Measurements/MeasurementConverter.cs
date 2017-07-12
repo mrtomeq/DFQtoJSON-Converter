@@ -6,7 +6,7 @@ namespace DFQtoJSONConverter.Measurements
 {
 	public static class MeasurementConverter
 	{
-		public static KeySetter<MeasuredValues> MeasurementKeySetter = new KeySetter<MeasuredValues>();
+		public static KeySetter<Measurement> MeasurementKeySetter = new KeySetter<Measurement>();
 
 		public static void Convert(IEnumerable<string> block, Characteristic[] characteristics)
 		{
@@ -14,7 +14,6 @@ namespace DFQtoJSONConverter.Measurements
 			{
 				if (char.IsNumber(line[0]))
 				{
-					//todo either create ne measuredVaule here or link it to characteristic...
 					//Field structure version 1
 					ProcessLineStructure1(line, characteristics);
 				}
@@ -33,7 +32,7 @@ namespace DFQtoJSONConverter.Measurements
 
 			for (var index = 0; index < characteristicValues.Length; index++)
 			{
-				var measured = new MeasuredValues();
+				var measured = new Measurement();
 				var values = characteristicValues[index].Split((char) 20);
 				SetFromArray(values, measured);
 
@@ -75,14 +74,14 @@ namespace DFQtoJSONConverter.Measurements
 			var lastMeasurement = characteristic.Measurements.LastOrDefault();
 			if (lastMeasurement == null || key.Equals(MeasurementKeys.Value) && lastMeasurement.Value.HasValue)
 			{
-				lastMeasurement = new MeasuredValues();
+				lastMeasurement = new Measurement();
 				characteristic.Measurements.Add(lastMeasurement);
 			}
 
 			MeasurementKeySetter.SetProperty(key, value, lastMeasurement);
 		}
 
-		public static void SetFromArray(string[] values, MeasuredValues measuredValues)
+		public static void SetFromArray(string[] values, Measurement measuredValues)
 		{
 			if (values.Length > 0)
 			{

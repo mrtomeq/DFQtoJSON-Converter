@@ -53,7 +53,6 @@ namespace DFQtoJSONConverter
 			propertyInfo.SetValue(dataType, value);
 		}
 
-
 		public void SetIntProperty(string value, T dataType, PropertyInfo propertyInfo)
 		{
 			if (int.TryParse(value, out int result))

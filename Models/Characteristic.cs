@@ -7,7 +7,7 @@ namespace Models
 	public class Characteristic
 	{
 		public string PartNumber { get; set; }
-		public IList<MeasuredValues> Measurements { get; set; } = new List<MeasuredValues>();
+		public IList<Measurement> Measurements { get; set; } = new List<Measurement>();
 
 		/// <summary>
 		/// K2001
