@@ -1,5 +1,5 @@
 # DFQ to JSON Converter
-#### DFQ to JSON Converter is a Q-DAS ASCII transfer format to JSON converter. 
+#### DFQ to JSON Converter converts Q-DAS ASCII transfer format to JSON. 
 
 ### Features
 -	Reads part, characteristics and measurement data according to requirements and rules stated in [QDAS technical document](http://www.q-das.com/fileadmin/files2/dataformat/Q-DAS_ASCII-Transfer-Format_ENG_V12_ec.pdf). 
