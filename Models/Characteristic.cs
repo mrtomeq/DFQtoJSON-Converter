@@ -798,7 +798,7 @@ namespace Models
 		/// K2402 - Gage Description
 		/// </summary>
 		[Display(Name = "K2402", Description = "Gage Description")]
-		public string GageDescription1 { get; set; }
+		public string GageDescription { get; set; }
 
 		/// <summary>
 		/// K2403 - Gage Group
@@ -1006,10 +1006,322 @@ namespace Models
 
 
 
+		/// <summary>
+		/// K2509 - Sheet Description
+		/// </summary>
+		[Display(Name = "K2509", Description = "Sheet Description")]
+		public string SheetDescription { get; set; }
 
+		/// <summary>
+		/// K2511 - Reference 1
+		/// </summary>
+		[Display(Name = "K2511", Description = "Reference 1")]
+		public string Reference1 { get; set; }
 
+		/// <summary>
+		/// K2512 - Reference 2
+		/// </summary>
+		[Display(Name = "K2512", Description = "Reference 2")]
+		public string Reference2 { get; set; }
 
-		[Display(Name = "K2402", Description = "Gage Description")]
-		public string GageDescription { get; set; }
+		/// <summary>
+		/// K2513 - Reference 3
+		/// </summary>
+		[Display(Name = "K2513", Description = "Reference 3")]
+		public string Reference3 { get; set; }
+
+		/// <summary>
+		/// K2514 - Reference 4
+		/// </summary>
+		[Display(Name = "K2514", Description = "Reference 4")]
+		public string Reference4 { get; set; }
+
+		/// <summary>
+		/// K2515 - Reference 5
+		/// </summary>
+		[Display(Name = "K2515", Description = "Reference 5")]
+		public string Reference5 { get; set; }
+
+		/// <summary>
+		/// K2516 - Reference 6
+		/// </summary>
+		[Display(Name = "K2516", Description = "Reference 6")]
+		public string Reference6 { get; set; }
+
+		/// <summary>
+		/// K2517 - Reference 7
+		/// </summary>
+		[Display(Name = "K2517", Description = "Reference 7")]
+		public string Reference7 { get; set; }
+
+		/// <summary>
+		/// K2518 - Reference 8
+		/// </summary>
+		[Display(Name = "K2518", Description = "Reference 8")]
+		public string Reference8 { get; set; }
+
+		/// <summary>
+		/// K2519 - Reference 9
+		/// </summary>
+		[Display(Name = "K2519", Description = "Reference 9")]
+		public string Reference9 { get; set; }
+
+		/// <summary>
+		/// K2520 - Reference System
+		/// </summary>
+		[Display(Name = "K2520", Description = "Reference System")]
+		public string ReferenceSystem { get; set; }
+
+		/// <summary>
+		/// K2521 - Reference X Direction
+		/// </summary>
+		[Display(Name = "K2521", Description = "Reference X Direction")]
+		public float ReferenceXDirection { get; set; }
+
+		/// <summary>
+		/// K2522 - Reference Y Direction
+		/// </summary>
+		[Display(Name = "K2522", Description = "Reference Y Direction")]
+		public float ReferenceYDirection { get; set; }
+
+		/// <summary>
+		/// K2523 - Reference Z Direction
+		/// </summary>
+		[Display(Name = "K2523", Description = "Reference Z Direction")]
+		public float ReferenceZDirection { get; set; }
+
+		/// <summary>
+		/// K2524 - CAD Internal Reference
+		/// </summary>
+		[Display(Name = "K2524", Description = "CAD Internal Reference")]
+		public string CadInternalReference { get; set; }
+
+		/// <summary>
+		/// K2525 - Rotation Matrix
+		/// </summary>
+		[Display(Name = "K2525", Description = "Rotation Matrix")]
+		public string RotationMatrix { get; set; }
+
+		/// <summary>
+		/// K2526 - CAD Detail
+		/// </summary>
+		[Display(Name = "K2526", Description = "CAD Detail")]
+		public string CadDetail { get; set; }
+
+		/// <summary>
+		/// K2630 - Calibration Uncertainty
+		/// </summary>
+		[Display(Name = "K2630", Description = "Calibration Uncertainty")]
+		public string CalibrationUncertainty { get; set; }
+
+		/// <summary>
+		/// K2646 - Component Type
+		/// </summary>
+		[Display(Name = "K2646", Description = "Component Type")]
+		public int ComponentType { get; set; }
+
+		/// <summary>
+		/// K2654 - Vda5Version
+		/// </summary>
+		[Display(Name = "K2654", Description = "VDA 5 Version")]
+		public int Vda5Version { get; set; }
+
+		/// <summary>
+		/// K2800 - User Field Description 1
+		/// </summary>
+		[Display(Name = "K2800", Description = "User Field Description 1")]
+		public string UserFieldDescription1 { get; set; }
+
+		/// <summary>
+		/// K2801 - User Field Type
+		/// </summary>
+		[Display(Name = "K2801", Description = "User Field Type 1")]
+		public string UserFieldType1 { get; set; }
+
+		/// <summary>
+		/// K2802 - User Field Contents 1
+		/// </summary>
+		[Display(Name = "K2802", Description = "User Field Contents 1")]
+		public string UserFieldContents1 { get; set; }
+
+		/// <summary>
+		/// K2810 - User Field Description2
+		/// </summary>
+		[Display(Name = "K2810", Description = "User Field Description 2")]
+		public string UserFieldDescription2 { get; set; }
+
+		/// <summary>
+		/// K2811 - User Field Type 2
+		/// </summary>
+		[Display(Name = "K2811", Description = "User Field Type 2")]
+		public string UserFieldType2 { get; set; }
+
+		/// <summary>
+		/// K2812 - User Field Contents 2
+		/// </summary>
+		[Display(Name = "K2812", Description = "User Field Contents 2")]
+		public string UserFieldContents2 { get; set; }
+
+		/// <summary>
+		/// K2820 - User Field Description 3
+		/// </summary>
+		[Display(Name = "K2820", Description = "User Field Description 3")]
+		public string UserFieldDescription3 { get; set; }
+
+		/// <summary>
+		/// K2821 - User Field Type 3
+		/// </summary>
+		[Display(Name = "K2821", Description = "User Field Type 3")]
+		public string UserFieldType3 { get; set; }
+
+		/// <summary>
+		/// K2822 - User Field Contents 3
+		/// </summary>
+		[Display(Name = "K2822", Description = "User Field Contents 3")]
+		public string UserFieldContents3 { get; set; }
+
+		/// <summary>
+		/// K2830 - User Field Description 4
+		/// </summary>
+		[Display(Name = "K2830", Description = "User Field Description 4")]
+		public string UserFieldDescription4 { get; set; }
+
+		/// <summary>
+		/// K2831 - User Field Type 4
+		/// </summary>
+		[Display(Name = "K2831", Description = "User Field Type 4")]
+		public string UserFieldType4 { get; set; }
+
+		/// <summary>
+		/// K2832 - User Field Contents 4
+		/// </summary>
+		[Display(Name = "K2832", Description = "User Field Contents 4")]
+		public string UserFieldContents4 { get; set; }
+
+		/// <summary>
+		/// K2840 - User Field Description 5
+		/// </summary>
+		[Display(Name = "K2840", Description = "User Field Description 5")]
+		public string UserFieldDescription5 { get; set; }
+
+		/// <summary>
+		/// K2841 - User Field Type 5
+		/// </summary>
+		[Display(Name = "K2841", Description = "User Field Type 5")]
+		public string UserFieldType5 { get; set; }
+
+		/// <summary>
+		/// K2842 - User Field Contents 5
+		/// </summary>
+		[Display(Name = "K2842", Description = "User Field Contents 5")]
+		public string UserFieldContents5 { get; set; }
+
+		/// <summary>
+		/// K2850 - User Field Description 6
+		/// </summary>
+		[Display(Name = "K2850", Description = "User Field Description 6")]
+		public string UserFieldDescription6 { get; set; }
+
+		/// <summary>
+		/// K2851 - User Field Type 6
+		/// </summary>
+		[Display(Name = "K2851", Description = "User Field Type 6")]
+		public string UserFieldType6 { get; set; }
+
+		/// <summary>
+		/// K2852 - User Field Contents 6
+		/// </summary>
+		[Display(Name = "K2852", Description = "User Field Contents 6")]
+		public string UserFieldContents6 { get; set; }
+
+		/// <summary>
+		/// K2860 - User Field Description 7
+		/// </summary>
+		[Display(Name = "K2860", Description = "User Field Description 7")]
+		public string UserFieldDescription7 { get; set; }
+
+		/// <summary>
+		/// K2861 - User Field Type 7
+		/// </summary>
+		[Display(Name = "K2861", Description = "User Field Type 7")]
+		public string UserFieldType7 { get; set; }
+
+		/// <summary>
+		/// K2862 - User Field Contents 7
+		/// </summary>
+		[Display(Name = "K2862", Description = "User Field Contents 7")]
+		public string UserFieldContents7 { get; set; }
+
+		/// <summary>
+		/// K2870 - User Field Description 8
+		/// </summary>
+		[Display(Name = "K2870", Description = "User Field Description 8")]
+		public string UserFieldDescription8 { get; set; }
+
+		/// <summary>
+		/// K2871 - User Field Type 8
+		/// </summary>
+		[Display(Name = "K2871", Description = "User Field Type 8")]
+		public string UserFieldType8 { get; set; }
+
+		/// <summary>
+		/// K2872 - User Field Contents 8
+		/// </summary>
+		[Display(Name = "K2872", Description = "User Field Contents 8")]
+		public string UserFieldContents8 { get; set; }
+
+		/// <summary>
+		/// K2880 - User Field Description 9
+		/// </summary>
+		[Display(Name = "K2880", Description = "User Field Description 9")]
+		public string UserFieldDescription9 { get; set; }
+
+		/// <summary>
+		/// K2881 - User Field Type 9
+		/// </summary>
+		[Display(Name = "K2881", Description = "User Field Type 9")]
+		public string UserFieldType9 { get; set; }
+
+		/// <summary>
+		/// K2882 - User Field Contents 9
+		/// </summary>
+		[Display(Name = "K2882", Description = "User Field Contents 9")]
+		public string UserFieldContents9 { get; set; }
+
+		/// <summary>
+		/// K2890 -User Field Description 10
+		/// </summary>
+		[Display(Name = "K2890", Description = "User Field Description 10")]
+		public string UserFieldDescription10 { get; set; }
+
+		/// <summary>
+		/// K2891 - User Field Type 10
+		/// </summary>
+		[Display(Name = "K2891", Description = "User Field Type 10")]
+		public string UserFieldType10 { get; set; }
+
+		/// <summary>
+		/// K2892 - User Field Contents 10
+		/// </summary>
+		[Display(Name = "K2892", Description = "User Field Contents 10")]
+		public string UserFieldContents10 { get; set; }
+
+		/// <summary>
+		/// K2900 - Remark
+		/// </summary>
+		[Display(Name = "K2900", Description = "Remark")]
+		public string Remark { get; set; }
+
+		/// <summary>
+		/// K2901 - Test Conditions
+		/// </summary>
+		[Display(Name = "K2901", Description = "Test Conditions")]
+		public string TestConditions { get; set; }
+
+		/// <summary>
+		/// K2997 - Characteristic GUID
+		/// </summary>
+		[Display(Name = "K2997", Description = "Characteristic GUID")]
+		public Guid CharacteristicGuid { get; set; }
 	}
 }
