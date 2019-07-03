@@ -187,8 +187,8 @@ namespace Models
 		[Display(Name = "K2076", Description = "Calibration Date")]
 		public DateTime CalibrationDate1 { get; set; }
 
-		[Display(Name = "K2080", Description = "Characteristic Satus(activated, deactivated)")]
-		public int CharacteristicSatus { get; set; }
+		[Display(Name = "K2080", Description = "Characteristic Status(activated, deactivated)")]
+		public int CharacteristicStatus { get; set; }
 
 		[Display(Name = "K2091", Description = "Characteristic Index")]
 		public string CharacteristicIndex { get; set; }
