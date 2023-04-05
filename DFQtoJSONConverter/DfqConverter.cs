@@ -51,6 +51,11 @@ namespace DFQtoJSONConverter
 					lineBlock.Add(line);
 				}
 			}
+
+			if(lineBlock.Count > 0)
+			{
+                ProcessBlock(lineBlock);
+            }
 		}
 
 		public void ProcessBlock(List<string> block)
@@ -72,7 +77,8 @@ namespace DFQtoJSONConverter
 					Characteristics.Add(new Characteristic());
 				}
 
-				firstLine = block[1];
+                if (block.Count <= 1) return;
+                firstLine = block[1];
 			}
 
 			if (firstLine.StartsWith("K0999"))
