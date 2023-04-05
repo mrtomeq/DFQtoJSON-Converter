@@ -17,7 +17,9 @@ namespace ConverterConsole
 			foreach (var file in files)
 			{
 				converter.Convert(file);
-				File.WriteAllText(file.Replace(".dfq", ".json"), converter.GetJson());
+				var filename = file.Substring(0, file.Length - 4) + ".json";
+
+                File.WriteAllText(filename, converter.GetJson());
 			}
 		}
 	}
